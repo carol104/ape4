@@ -1,0 +1,42 @@
+# Docker Compose para desarrollo local
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: movies-api
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - STORAGE=json
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+# Para desarrollo con MySQL (opcional)
+# Descomentar si se necesita base de datos
+#
+#   mysql:
+#     image: mysql:8.0
+#     container_name: movies-db
+#     environment:
+#       MYSQL_ROOT_PASSWORD: rootpassword
+#       MYSQL_DATABASE: moviesdb
+#       MYSQL_USER: movieuser
+#       MYSQL_PASSWORD: moviepass
+#     ports:
+#       - "3306:3306"
+#     volumes:
+#       - mysql_data:/var/lib/mysql
+#     restart: unless-stopped
+#
+# volumes:
+#   mysql_data:

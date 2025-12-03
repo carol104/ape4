@@ -1,0 +1,16 @@
+# Archivos y carpetas a ignorar en la imagen Docker
+node_modules
+npm-debug.log
+.git
+.gitignore
+.env
+.env.*
+coverage
+tests
+*.test.js
+*.md
+.vscode
+.idea
+Dockerfile
+docker-compose.yml
+.dockerignore
