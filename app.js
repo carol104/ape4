@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from 'dotenv';
 import movieRoutes from './routes/movie.js';
+import healthRoutes from './routes/health.js';
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.get("/", (req, res) => {
 });
 
 app.use('/movies', movieRoutes);
+app.use('/health', healthRoutes);
 
 // Solo iniciar el servidor si no está siendo importado para pruebas
 if (process.env.NODE_ENV !== 'test') {
