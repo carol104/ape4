@@ -1,0 +1,31 @@
+{
+  "name": "appserver",
+  "version": "1.0.0",
+  "description": "API REST de películas - CRUD completo",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules STORAGE=json NODE_ENV=test jest --coverage --verbose",
+    "test:unit": "cross-env NODE_OPTIONS=--experimental-vm-modules STORAGE=json NODE_ENV=test jest --testPathPattern=tests/unit --verbose",
+    "test:integration": "cross-env NODE_OPTIONS=--experimental-vm-modules STORAGE=json NODE_ENV=test jest --testPathPattern=tests/integration --verbose",
+    "fix-genre": "node scripts/fix-genre.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.3.0",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "jest": "^30.2.0",
+    "nodemon": "3.1.10",
+    "supertest": "^7.1.4"
+  }
+}
